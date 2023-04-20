@@ -49,7 +49,7 @@ possible.
 The gui does provide a list of all valid ports you can query when a connection
 can be made.
 
-## Roadmap
+## 🗺️ Roadmap
 
 In the future, this tool aims to use REST calls to provide more information
 about a port.
