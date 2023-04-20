@@ -1,0 +1,14 @@
+[package]
+name = "ccntool_tui"
+authors = ["Tim Biermann <tim.biermann@hs-duesseldorf.de>"]
+version = "0.0.1"
+edition = "2021"
+rust-version = "1.67"
+description = "tui frontend for ccntool_core"
+readme = "../README.md"
+homepage = "https://cit.hs-duesseldorf.de/profil/cc-netze"
+publish = false
+
+[dependencies]
+ccntool_core = { path = "../ccntool_core" }
+cursive = { version = "0.20.0", default-features = false, features = ["crossterm-backend"] }

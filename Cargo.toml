@@ -1,0 +1,19 @@
+[workspace]
+members = [
+    "ccntool_core",
+    "ccntool_cli",
+    "ccntool_gui",
+    "ccntool_tui",
+]
+
+[profile.release]
+codegen-units = 1
+incremental = true
+lto = true
+opt-level = 3
+overflow-checks = false
+panic = "abort"
+strip = true
+
+[profile.release.package."*"]
+opt-level = 3

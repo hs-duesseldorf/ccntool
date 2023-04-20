@@ -1,0 +1,15 @@
+[package]
+name = "ccntool_core"
+authors = ["Tim Biermann <tim.biermann@hs-duesseldorf.de>"]
+version = "0.3.0"
+edition = "2021"
+rust-version = "1.67"
+description = "core package for ccntool, providing the mysql connection and other common functions"
+readme = "../README.md"
+homepage = "https://cit.hs-duesseldorf.de/profil/cc-netze"
+publish = false
+
+[dependencies]
+dotenvy = { version = "0.15.7", default-features = false }
+sqlx = { version = "0.6.3", default-features = false, features = ["runtime-tokio-rustls", "mysql"] }
+tokio = { version = "1", default-features = false, features = ["macros"] }

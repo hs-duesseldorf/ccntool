@@ -1,0 +1,14 @@
+[package]
+name = "ccntool_cli"
+authors = ["Tim Biermann <tim.biermann@hs-duesseldorf.de>"]
+version = "0.2.0"
+edition = "2021"
+rust-version = "1.67"
+description = "cli frontend for ccntool_core"
+readme = "../README.md"
+homepage = "https://cit.hs-duesseldorf.de/profil/cc-netze"
+publish = false
+
+[dependencies]
+ccntool_core = { path = "../ccntool_core" }
+dotenvy = "0.15.7"
