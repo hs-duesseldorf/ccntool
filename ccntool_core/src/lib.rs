@@ -156,7 +156,7 @@ pub async fn queryall(conn: Pool<MySql>) -> Result<Vec<String>, sqlx::Error> {
         r#"
 SELECT Notes
 FROM fac_Ports
-WHERE Notes REGEXP '^[0-9]+.[EU0-9]+.[0-9]+-[0-9a-z]+[/,]?[0-9]+$'
+WHERE Notes REGEXP '^[0-9]+.[EU0-9]+.[0-9]+-[0-9a-z/,]+?$'
 OR Notes REGEXP '^MT-'
         "#,
     )
