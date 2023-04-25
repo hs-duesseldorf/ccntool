@@ -17,6 +17,7 @@ jobs:
             archive: tar.xz
           - target: x86_64-apple-darwin
             archive: zip
+        package: [ccntool_cli, ccntool_gui, ccntool_tui]
     steps:
       - uses: actions/checkout@master
       - name: Compile and release
@@ -25,4 +26,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           RUSTTARGET: ${{ matrix.target }}
+          SRC_DIR: ${{ matrix.package }}
           ARCHIVE_TYPES: ${{ matrix.archive }}
