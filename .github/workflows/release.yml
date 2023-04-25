@@ -13,11 +13,13 @@ jobs:
         include:
           - target: x86_64-pc-windows-gnu
             archive: zip
+            package: [ccntool_cli, ccntool_gui, ccntool_tui]
           - target: x86_64-unknown-linux-musl
             archive: tar.xz
+            package: [ccntool_cli, ccntool_gui, ccntool_tui]
           - target: x86_64-apple-darwin
             archive: zip
-        package: [ccntool_cli, ccntool_gui, ccntool_tui]
+            package: [ccntool_cli, ccntool_gui, ccntool_tui]
     steps:
       - uses: actions/checkout@master
       - name: Compile and release
