@@ -1,7 +1,8 @@
 name: build release artifacts
 
 on:
-  push:
+  release:
+    types: [created]
 
 jobs:
   release:
@@ -11,8 +12,9 @@ jobs:
       fail-fast: false
       matrix:
         target: [x86_64-pc-windows-gnu, x86_64-unknown-linux-musl, x86_64-apple-darwin]
-        archive: [zip, tar.xz]
-        package: [ccntool_cli, ccntool_gui, ccntool_tui]
+        archive: [zip]
+        #package: [ccntool_cli, ccntool_gui, ccntool_tui]
+        package: [ccntool_gui]
     steps:
       - uses: actions/checkout@master
       - name: Compile and release
