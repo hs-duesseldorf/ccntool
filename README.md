@@ -1,3 +1,5 @@
+<img src="assets/tdqu.png" align="right" />
+
 ccntool
 =======
 
@@ -25,6 +27,8 @@ If there is any actual demand for that please open a ticket.
 ## 🛍️ Installation
 
 You need at least rust version 1.67 to compile this project installed.
+Tested and proven working on both Windows and Linux workstations,
+probably on macOS too.
 
 1. `git clone https://github.com/hs-duesseldorf/ccntool.git`
 2. `cd ccntool`
@@ -32,11 +36,19 @@ You need at least rust version 1.67 to compile this project installed.
 
 ## 🛠️ How to use
 
-You need to pass an user, a password and a hostname to connect to your
-database.
-Using the gui you can define it over the settings button, CLI and TUI user
-will need to create a file called `.env` alongside their binary which should
-look like that:
+
+### Connecting the tool to the database
+You need a working openDCIM installation (mainly for its database) and
+connectivity to it to use these tools.
+It is not intended to replace your database, but to give you a very specific
+view on your data to aid in first and second level which include a wall
+socket connected to a switch.
+
+All frontends can be configured via environmental flags or a file called
+`.env` next to the executable.
+The GUI can be configured from within itself at runtime, too.
+
+The name `dcim` for the database is currently hardcoded.
 
 ```
 DCIMHOST=dcim.my.tld
@@ -44,10 +56,12 @@ DCIMUSER=user
 DCIMPASSWORD=password
 ```
 
-If done correctly, all frontends should be self-explanatory and usage is
-possible.
-The gui does provide a list of all valid ports you can query when a connection
-can be made.
+### Getting information
+
+On both the CLI and TUI you are expected to input a valid wallsocket
+description, there is no further help.
+The GUI queries all ports after being configured and offers a list of all
+valid queries as a dropdown menu.
 
 ## 🗺️ Roadmap
 
@@ -57,6 +71,18 @@ about a port.
 If possible, it would be nice to compile a working web application from
 the gui.
 
+Reporting specific wallports for review via email/teams-api/.. would be nice.
+
+## 📷 Screenshots
+
+
+### CLI
+to be added
+
+### TUI
+to be added
+### GUI
+![GUI running on Windows](assets/tdqu.png)
 ## ⚠️ Caveats
 
 As noted above, the regex used is very specific to our use case and will need
