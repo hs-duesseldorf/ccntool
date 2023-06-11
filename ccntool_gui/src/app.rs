@@ -38,6 +38,7 @@ impl EguiSandbox {
                     scale: 0.90,
                     y_offset_factor: 0.3,
                     y_offset: 0.0,
+                    baseline_offset_factor: 1.0,
                 },
             ),
         );
