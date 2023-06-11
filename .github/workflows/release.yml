@@ -1,0 +1,27 @@
+name: build release artifacts
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  release:
+    name: release ${{ matrix.target }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [x86_64-pc-windows-gnu, x86_64-unknown-linux-musl, x86_64-apple-darwin]
+        archive: [zip]
+        #package: [ccntool_cli, ccntool_gui, ccntool_tui]
+        package: [ccntool_gui]
+    steps:
+      - uses: actions/checkout@master
+      - name: Compile and release
+        uses: rust-build/rust-build.action@v1.4.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          RUSTTARGET: ${{ matrix.target }}
+          SRC_DIR: ${{ matrix.package }}
+          ARCHIVE_TYPES: ${{ matrix.archive }}
