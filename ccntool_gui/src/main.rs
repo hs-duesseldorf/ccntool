@@ -5,7 +5,12 @@ use eframe::egui;
 
 #[cfg(not(target_arch = "wasm32"))]
 fn main() {
+    use image::load_from_memory;
+
     tracing_subscriber::fmt::init();
+
+    let icon = load_from_memory(include_bytes!("../../assets/HSDCIT.png")).expect("Failed to open icon path");
+    let (icon_width, icon_height) = icon.clone().into_rgb8().dimensions();
 
     let native_options = eframe::NativeOptions {
         decorated: false,
@@ -14,6 +19,12 @@ fn main() {
         min_window_size: Some(egui::vec2(300.0, 210.0)),
         max_window_size: Some(egui::vec2(640.0, 480.0)),
         transparent: true,
+        icon_data: Some(eframe::IconData {
+            rgba: icon.into_bytes(),
+            width: icon_width,
+            height: icon_height,
+        }),
+        drag_and_drop_support: true,
         ..Default::default()
     };
 
