@@ -30,7 +30,7 @@ impl EguiSandbox {
                     y_offset_factor: 0.15,
                     y_offset: 0.0,
                     baseline_offset_factor: 0.0,
-                }
+                },
             ),
         );
 
@@ -184,7 +184,7 @@ impl eframe::App for EguiSandbox {
                                 };
 
                                 self.ports = queryall(
-                                    connectdb(un, pw, burl).expect("Can't connect to database!")
+                                    connectdb(un, pw, burl).expect("Can't connect to database!"),
                                 )
                                 .unwrap();
                                 self.settings_toggler = false;
