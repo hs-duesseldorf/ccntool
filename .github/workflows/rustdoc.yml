@@ -4,8 +4,7 @@ name: rustdoc
 
 on:  # yamllint disable-line rule:truthy
   push:
-    branches:
-      - main
+    branches: ["main"]
 
 env:
   CARGO_INCREMENTAL: 0
@@ -22,13 +21,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install Rust toolchain
+      - name: Install toolchain
         run: rustup update --no-self-update stable
+
+      - name: Use cache
+        uses: Swatinem/rust-cache@v3
 
       - name: Build Documentation
         run: cargo doc --all --no-deps
 
-      - name: Deploy Docs
+      - name: Deploy Documentation
         uses:
           peaceiris/actions-gh-pages@364c31d33bb99327c77b3a5438a83a357a6729ad
         with:

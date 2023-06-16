@@ -6,6 +6,7 @@ on:  # yamllint disable-line rule:truthy
   push:
     branches: ["main"]
   pull_request:
+    branches: ["main"]
 
 env:
   CARGO_TERM_COLOR: always
@@ -21,8 +22,19 @@ jobs:
           - beta
           - nightly
     steps:
-      - uses: actions/checkout@v3
-      - run: |
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install toolchain
+        run: |
           rustup update ${{ matrix.toolchain }} && \
           rustup default ${{ matrix.toolchain }}
-      - run: cargo build --verbose
+
+      - name: Use cache
+        uses: Swatinem/rust-cache@v3
+
+      - name: Build with ${{ matrix.toolchain }}
+        run: cargo build --verbose
+
+      - name: Check with ${{ matrix.toolchain }}
+        run: cargo check --verbose

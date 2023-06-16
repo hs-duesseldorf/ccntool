@@ -6,7 +6,6 @@ permissions:
   contents: write
 
 on:  # yamllint disable-line rule:truthy
-
   release:
     types: [created]
 
@@ -28,8 +27,10 @@ jobs:
           - windows-latest
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v3
-      - uses: taiki-e/upload-rust-binary-action@v1
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Create packed release binaries
+        uses: taiki-e/upload-rust-binary-action@v1
         with:
           # bin: ccntool_gui,ccntool_cli,ccntool_tui
           bin: ccntool_gui
