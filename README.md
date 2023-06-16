@@ -1,4 +1,12 @@
-<img src="assets/tdqu.png" align="right" />
+<p align="right">
+  <a href="https://github.com/hs-duesseldorf/ccntool/actions/workflows/rust-clippy.yml">
+    <img src="https://github.com/hs-duesseldorf/ccntool/actions/workflows/rust-clippy.yml/badge.svg" alt="rust-clippy analyze">
+  </a>
+  <a href="https://github.com/hs-duesseldorf/ccntool/actions/workflows/ci.yml">
+    <img src="https://github.com/hs-duesseldorf/ccntool/actions/workflows/ci.yml/badge.svg" alt="Cargo Build & Test">
+  </a>
+  <img src="assets/tdqu.png" align="right" />
+</p>
 
 ccntool
 =======
