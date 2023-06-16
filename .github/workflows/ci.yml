@@ -31,7 +31,7 @@ jobs:
           rustup default ${{ matrix.toolchain }}
 
       - name: Use cache
-        uses: Swatinem/rust-cache@v3
+        uses: Swatinem/rust-cache@v2
 
       - name: Build with ${{ matrix.toolchain }}
         run: cargo build --verbose

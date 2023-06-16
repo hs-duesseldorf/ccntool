@@ -23,7 +23,7 @@ jobs:
           components: clippy
 
       - name: Use cache
-        uses: Swatinem/rust-cache@v3
+        uses: Swatinem/rust-cache@v2
 
       - name: Run clippy
         uses: giraffate/clippy-action@v1
