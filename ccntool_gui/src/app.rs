@@ -24,7 +24,14 @@ impl EguiSandbox {
 
         fonts.font_data.insert(
             "hsd".into(),
-            egui::FontData::from_static(include_bytes!("../../assets/HSDSans-Regular.ttf")),
+            egui::FontData::from_static(include_bytes!("../../assets/HSDSans-Regular.ttf")).tweak(
+                FontTweak {
+                    scale: 1.0,
+                    y_offset_factor: 0.15,
+                    y_offset: 0.0,
+                    baseline_offset_factor: 0.0,
+                },
+            ),
         );
 
         fonts
@@ -177,7 +184,7 @@ impl eframe::App for EguiSandbox {
                                 };
 
                                 self.ports = queryall(
-                                    connectdb(un, pw, burl).expect("Can't connect to database!")
+                                    connectdb(un, pw, burl).expect("Can't connect to database!"),
                                 )
                                 .unwrap();
                                 self.settings_toggler = false;
