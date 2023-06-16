@@ -1,9 +1,12 @@
+---
+
 name: build release artifacts
 
 permissions:
   contents: write
 
-on:
+on:  # yamllint disable-line rule:truthy
+
   release:
     types: [created]
 
@@ -28,7 +31,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: taiki-e/upload-rust-binary-action@v1
         with:
-          #bin: ccntool_gui,ccntool_cli,ccntool_tui
+          # bin: ccntool_gui,ccntool_cli,ccntool_tui
           bin: ccntool_gui
           tar: unix
           zip: windows
