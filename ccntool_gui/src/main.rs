@@ -20,6 +20,7 @@ fn main() {
         min_window_size: Some(egui::vec2(300.0, 210.0)),
         max_window_size: Some(egui::vec2(640.0, 480.0)),
         transparent: true,
+        app_id: Some(String::from("TDQU")),
         icon_data: Some(eframe::IconData {
             rgba: icon.into_bytes(),
             width: icon_width,
