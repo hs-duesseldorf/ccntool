@@ -1,0 +1,1 @@
+window.ALL_CRATES = ["ccntool_cli","ccntool_core","ccntool_gui","ccntool_tui"];
