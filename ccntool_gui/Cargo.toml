@@ -1,7 +1,7 @@
 [package]
 name = "ccntool_gui"
 authors = ["Tim Biermann <tim.biermann@hs-duesseldorf.de>"]
-version = "0.2.2"
+version = "0.2.3"
 edition = "2021"
 rust-version = "1.67"
 description = "gui frontend for ccntool_core"
