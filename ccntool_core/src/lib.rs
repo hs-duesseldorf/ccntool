@@ -64,7 +64,7 @@ use std::time::Duration;
 ///     ..
 /// }
 /// ```
-#[tokio::main]
+#[tokio::main(flavor = "current_thread")]
 pub async fn connectdb(
     un: Option<String>,
     pw: Option<String>,
@@ -147,7 +147,7 @@ pub async fn connectdb(
 /// }
 /// ```
 
-#[tokio::main]
+#[tokio::main(flavor = "current_thread")]
 pub async fn queryall(conn: Pool<MySql>) -> Result<Vec<String>, sqlx::Error> {
     let mut allports: Vec<String> = Vec::new();
 
@@ -160,7 +160,7 @@ WHERE Notes REGEXP '^[0-9]+.[EU0-9]+.[0-9]+-[0-9a-z/,]+?$'
 OR Notes REGEXP '^MT-|.*APD.*|.*APP.*|.*APR.*|.*APM.*|.*APK.*'
         "#,
     )
-    .fetch_all(&mut conn.acquire().await?)
+    .fetch_all(&mut *conn.acquire().await?)
     .await?;
 
     for row in allvalidnotes {
@@ -223,7 +223,7 @@ OR Notes REGEXP '^MT-|.*APD.*|.*APP.*|.*APR.*|.*APM.*|.*APK.*'
 /// }
 /// ```
 ///
-#[tokio::main]
+#[tokio::main(flavor = "current_thread")]
 pub async fn myquery(conn: Pool<MySql>, notes: &str) -> Result<Vec<String>, sqlx::Error> {
     let mut results: Vec<String> = Vec::new();
 
@@ -255,7 +255,7 @@ WHERE p1.Notes = ? LIMIT 1
             row.get::<String, _>("@SwitchIP"),
         )
     })
-    .fetch_all(&mut conn.acquire().await?)
+    .fetch_all(&mut *conn.acquire().await?)
     .await?;
 
     for i in selectedrows {

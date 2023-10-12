@@ -5,6 +5,7 @@ members = [
     "ccntool_gui",
     "ccntool_tui",
 ]
+resolver = "2"
 
 [profile.release]
 codegen-units = 1
