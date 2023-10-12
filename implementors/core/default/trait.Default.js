@@ -1,0 +1,3 @@
+(function() {var implementors = {
+"ccntool_gui":[["impl <a class=\"trait\" href=\"https://doc.rust-lang.org/1.73.0/core/default/trait.Default.html\" title=\"trait core::default::Default\">Default</a> for <a class=\"struct\" href=\"ccntool_gui/struct.EguiSandbox.html\" title=\"struct ccntool_gui::EguiSandbox\">EguiSandbox</a>"]]
+};if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()
