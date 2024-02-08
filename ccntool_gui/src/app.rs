@@ -192,6 +192,12 @@ impl eframe::App for EguiSandbox {
                         });
                     });
                 });
+                if ctx.input(|i| i.viewport().close_requested()) {
+                    self.results.clear();
+                    self.buf = String::new();
+                    self.error.clear();
+                    self.settings_toggler = false;
+                }
             }
 
             if self.results.is_empty() {
@@ -228,14 +234,5 @@ Description: {}"#,
 
     fn save(&mut self, storage: &mut dyn eframe::Storage) {
         eframe::set_value(storage, eframe::APP_KEY, self);
-    }
-
-    fn on_close_event(&mut self) -> bool {
-        self.results.clear();
-        self.buf = String::new();
-        self.error.clear();
-        self.settings_toggler = false;
-
-        true
     }
 }

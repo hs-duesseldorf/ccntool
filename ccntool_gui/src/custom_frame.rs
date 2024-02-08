@@ -1,3 +1,4 @@
+use eframe::egui::{self, ViewportCommand};
 use egui::RichText;
 
 pub fn custom_window_frame(
@@ -71,9 +72,9 @@ fn title_bar_ui(
 
     // Interact with the title bar (drag to move window):
     if title_bar_response.double_clicked() {
-        frame.set_maximized(!frame.info().window_info.maximized);
-    } else if title_bar_response.is_pointer_button_down_on() {
-        frame.drag_window();
+        let is_maximized = ui.input(|i| i.viewport().maximized.unwrap_or(false));
+        ui.ctx()
+            .send_viewport_cmd(ViewportCommand::Maximized(!is_maximized));
     }
 
     ui.allocate_ui_at_rect(title_bar_rect, |ui| {
@@ -81,13 +82,13 @@ fn title_bar_ui(
             ui.spacing_mut().item_spacing.x = 0.0;
             ui.visuals_mut().button_frame = false;
             ui.add_space(8.0);
-            close_maximize_minimize(ui, frame);
+            close_maximize_minimize(ui);
         });
     });
 }
 
 /// Show some close/maximize/minimize buttons for the native window.
-fn close_maximize_minimize(ui: &mut egui::Ui, frame: &mut eframe::Frame) {
+fn close_maximize_minimize(ui: &mut egui::Ui) {
     use egui::Button;
 
     let button_height = 12.0;
@@ -96,22 +97,24 @@ fn close_maximize_minimize(ui: &mut egui::Ui, frame: &mut eframe::Frame) {
         .add(Button::new(RichText::new("❌").size(button_height)))
         .on_hover_text("Close the window");
     if close_response.clicked() {
-        frame.close();
+        ui.ctx().send_viewport_cmd(egui::ViewportCommand::Close);
     }
 
-    if frame.info().window_info.maximized {
+    let is_maximized = ui.input(|i| i.viewport().maximized.unwrap_or(false));
+    if is_maximized {
         let maximized_response = ui
             .add(Button::new(RichText::new("🗗").size(button_height)))
             .on_hover_text("Restore window");
         if maximized_response.clicked() {
-            frame.set_maximized(false);
+            ui.ctx()
+                .send_viewport_cmd(ViewportCommand::Maximized(false));
         }
     } else {
         let maximized_response = ui
             .add(Button::new(RichText::new("🗗").size(button_height)))
             .on_hover_text("Maximize window");
         if maximized_response.clicked() {
-            frame.set_maximized(true);
+            ui.ctx().send_viewport_cmd(ViewportCommand::Maximized(true));
         }
     }
 
@@ -119,6 +122,6 @@ fn close_maximize_minimize(ui: &mut egui::Ui, frame: &mut eframe::Frame) {
         .add(Button::new(RichText::new("🗕").size(button_height)))
         .on_hover_text("Minimize the window");
     if minimized_response.clicked() {
-        frame.set_minimized(true);
+        ui.ctx().send_viewport_cmd(ViewportCommand::Minimized(true));
     }
 }

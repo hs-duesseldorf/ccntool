@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=TDQU
+GenericName=TDQU (openDCIM query utility)
+Exec=tdqu
+Categories=Network;System;
+Icon=com.github.hs-duesseldorf.ccntool
+Terminal=false

@@ -12,4 +12,4 @@ publish = false
 [dependencies]
 dotenvy = { version = "0.15.7", default-features = false }
 sqlx = { version = "0.6.3", default-features = false, features = ["runtime-tokio-rustls", "mysql"] }
-tokio = { version = "1.20.0", features = ["rt", "macros"]}
+tokio = { version = "1.36.0", features = ["rt", "macros"]}
