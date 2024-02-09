@@ -9,13 +9,13 @@ fn main() {
 
     let native_options = eframe::NativeOptions {
         follow_system_theme: true,
-        //initial_window_size: Some(egui::vec2(300.0, 210.0)),
         viewport: egui::ViewportBuilder::default()
             .with_title("TDQU")
             .with_app_id("TDQU")
             .with_inner_size([300.0, 210.0])
             .with_max_inner_size([640.0, 480.0])
             .with_decorations(false)
+            .with_drag_and_drop(true)
             .with_icon(
                 eframe::icon_data::from_png_bytes(include_bytes!("../../assets/HSDCIT.png"))
                     .unwrap(),
